@@ -1,0 +1,22 @@
+name: Main
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Chekcout repository
+        uses: actions/checkout@v3
+      
+      - name: Building
+        run: docker build -t vue-app ./greetings/
+        
+  serve-dist:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Serve prod. dist using http
+        run: docker run -it -p 8080:8080 --rm --name vue-app vue-app
