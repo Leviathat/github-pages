@@ -1,3 +1,8 @@
+# --------------------|
+# -----03/07/2023-----|
+# (C) Mukanov Murager |
+# --------------------|
+
 name: Main
 
 on: push
@@ -12,11 +17,5 @@ jobs:
       
       - name: Building
         run: docker build -t vue-app ./greetings/
-        
-  serve-dist:
-    needs: build
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Serve prod. dist using http
-        run: docker run -it -p 8080:8080 --rm --name vue-app vue-app
+
+# Need to define approach of deploying contaier to Github Pages
